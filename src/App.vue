@@ -136,7 +136,6 @@
     main {
         min-height: 100vh;
         padding: 25px;
-        margin: 0% 25% 0% 25%;
         background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
     }
 
