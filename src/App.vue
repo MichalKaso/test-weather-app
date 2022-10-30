@@ -99,7 +99,7 @@
 
   }
   
-}
+ }
 </script>
 
 <style>
@@ -114,6 +114,8 @@
 
     body {
         font-family: 'montserrat', sans-serif;
+       
+        
     }
 
 
@@ -123,6 +125,7 @@
         background: url(./assets/cold.jpg);
         background-position: bottom;
         transition: 0.4s;
+        
     }
 
     #app.warm {
@@ -133,6 +136,7 @@
     main {
         min-height: 100vh;
         padding: 25px;
+        margin: 0% 25% 0% 25%;
         background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
     }
 
