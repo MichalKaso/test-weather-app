@@ -146,7 +146,7 @@
         text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
         background-color: rgba(255, 255, 255, 0.25);
         border-radius: 16px;
-        margin: 10px 0px;
+        margin: 5px 0px;
 
         box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
     }
