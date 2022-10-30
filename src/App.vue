@@ -3,7 +3,9 @@
         'warm' : '' ">
 
         <main>
-            <h3> Please type bellow the location (eg. "Athens" or "Athens, GR")</h3>
+            <div class="weather-box">
+                <h1 class="h1" >Weather App</h1>
+            </div>
             <br>
             <div class="search-box">
                 <input 
@@ -20,6 +22,7 @@
                 <div class="location-box">
                     <div class="location">{{ weather.name }}, {{ weather.sys.country }} </div>
                     <div class="date">{{ dateBuilder() }} </div>
+                    <p>(click on "temp" to switch to °F)</p>
                 </div>
 
                 <div class="weather-box">
@@ -27,20 +30,18 @@
                     <div @click="isShow = !isShow" v-if="isShow"   class="temp">{{ Math.round(weather.main.temp * 1.8) + 32 }}°F</div>
                 </div>
 
-
-
-
                 <div class="weather-box">
                     <div class="weather">{{ weather.weather[0].main }}</div>
-                </div>                
+                </div>    
 
-                <div class="extra-info">
-                    <div class="extra"> Humidity: {{ weather.main.humidity }}% </div>
-                    <div class="extra"> Wind: {{ weather.wind.speed }} km/h </div>
-                    <div class="extra"> Sunrise: {{new Date(weather.sys.sunrise).toLocaleTimeString("en-US") }} </div>
-                    <div class="extra"> Sunset: {{ new Date(weather.sys.sunset).toLocaleTimeString("en-US") }} </div>
+                <div class="weather-box">
+                    <div class="extra-info">
+                        <div class="extra"> Humidity: {{ weather.main.humidity }}% </div>
+                        <div class="extra"> Wind: {{ weather.wind.speed }} km/h </div>
+                        <div class="extra"> Sunrise: {{new Date((weather.sys.sunrise) * 1000).toLocaleTimeString() }} </div>
+                        <div class="extra"> Sunset: {{ new Date((weather.sys.sunset ) * 1000 ).toLocaleTimeString() }} </div>
+                    </div>
                 </div>
-
             </div>
 
         </main>
@@ -103,6 +104,8 @@
 
 <style>
 
+    
+    
     * {
         margin: 0;
         padding: 0;
@@ -113,15 +116,18 @@
         font-family: 'montserrat', sans-serif;
     }
 
+
+    
+
     #app {
-        background-color: #A8B2BF;
-        background-size: cover;
+        background: url(./assets/cold.jpg);
         background-position: bottom;
         transition: 0.4s;
     }
 
     #app.warm {
-        background-color: #FFFF6B;
+        background:url(./assets/warm.jpg);
+      
     }
 
     main {
@@ -130,9 +136,26 @@
         background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
     }
 
+    .weather-box .h1 {
+        display: inline-block;
+        padding: 10px 25px;
+        color: #FFF;
+        font-size: 45px;
+        font-weight: 900;
+
+        text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 16px;
+        margin: 10px 0px;
+
+        box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+    }
+
+
     .search-box {
-        width: 100%;
+        width: 50%;
         margin-bottom: 30px;
+        margin-left: 25%;
     }
     
     .search-box .search-bar {
@@ -140,8 +163,9 @@
         width: 100%;
         padding: 15px;
 
-        color: #313131;
+        color: #000000;
         font-size: 20px;
+        
 
         appearance: none;
         border: none;
@@ -154,27 +178,23 @@
         transition: 0.4s;
     }
 
+
     .search-box .search-bar:focus {
         box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
         background-color: rgba(255, 255, 255 0.75);
         border-radius: 16px 0px 16px 0px;
     } 
     
-    .location-box .location {
+    .location-box .location  {
         color: #fff;
         font-size: 32px;
         font-weight: 500;
         text-align: center;
         text-shadow: 1px 3px rgba(0, 0, 0, 0.25);
+
     }
 
-    h3 {
-        color: #fff;
-        font-size: 22px;
-        font-weight: 500;
-        text-align: center;
-        text-shadow: 1px 3px rgba(0, 0, 0, 0.25); 
-    }
+   
 
     .location-box .date {
         color: #fff;
@@ -185,11 +205,22 @@
     }
 
     .extra-info {
+        width: 265px;
+        display: inline-block;
+        padding: 10px 25px;
         color: #fff;
         font-size: 22px;
         font-weight: 500;
         text-align: center;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 16px;
+        margin: 0px 0px;
+        box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
         text-shadow: 1px 3px rgba(0, 0, 0, 0.25);
+    }
+
+    .extra {
+        margin-top: 5px;
     }
 
     .hide {
@@ -218,11 +249,24 @@
     }
 
     .weather-box .weather {
+        width: 265px;
+        display: inline-block;
+        padding: 10px 25px;
         color: #fff;
         font-size: 38px;
         font-weight: 700;
         font-style: italic;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 16px;
+        margin: 30px 0px;
         text-shadow: 3px 6px rgba(0, 0, 0, 0.24);
+        box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    p {
+        text-align: center;
+        margin-top: 12px;
+        font-size: x-small;
     }
 
 </style>
