@@ -23,10 +23,11 @@
                 </div>
 
                 <div class="weather-box">
-                    <div class="temp">{{ Math.round(weather.main.temp) }}°C</div> 
-                    <br>
-                    <div class="temp">{{ Math.round(weather.main.temp * 1.8) + 32 }}°F</div>
+                    <div @click="isShow = !isShow" v-if="!isShow" class="temp">{{ Math.round(weather.main.temp) }}°C</div> 
+                    <div @click="isShow = !isShow" v-if="isShow"   class="temp">{{ Math.round(weather.main.temp * 1.8) + 32 }}°F</div>
                 </div>
+
+
 
 
                 <div class="weather-box">
@@ -59,7 +60,9 @@
         url_base:'https://api.openweathermap.org/data/2.5/',
         query: '',
         weather: {},
-        scale: 'Celcius'
+        isShow: false,
+       
+
     }
   },
 
@@ -90,13 +93,8 @@
         return ` ${day} ${date} ${month} ${year} `;
     }, 
 
-    toFahrenheit(value) {
-        return Math.floor((value * 1.8) + 32);
-    },
 
-    toggleTemperature() {
-        (this.scale === 'Celcius')? this.scale = 'Fahrenheit' : this.scale = 'Celcius';
-    }
+
 
   }
   
@@ -192,6 +190,10 @@
         font-weight: 500;
         text-align: center;
         text-shadow: 1px 3px rgba(0, 0, 0, 0.25);
+    }
+
+    .hide {
+        display: none;
     }
 
 
